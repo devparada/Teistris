@@ -11,7 +11,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received squares0 copy of the GNU General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package teistris;
@@ -19,7 +19,7 @@ package teistris;
 import java.awt.Color;
 
 /**
- * Clase que implementa squares0 peza cadrada do xogo do Tetris
+ * Clase que implementa a peza cadrada do xogo do Tetris
  *
  * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
  */
@@ -31,7 +31,7 @@ public class Piece {
     private Game game;
 
     /**
-     * Referenzas aos catro cadrados que forman squares0 peza
+     * Referenzas aos catro cadrados que forman a peza
      */
     private Square[] squares;
 
@@ -40,7 +40,7 @@ public class Piece {
     }
 
     /**
-     * Construtor da clase, que crea os catro cadrados que forman squares0 peza
+     * Construtor da clase, que crea os catro cadrados que forman a peza
      */
     public Piece(Game game) {
         this.game = game;
@@ -72,7 +72,7 @@ public class Piece {
     }
 
     /**
-     * Move squares ficha á dereita se é posible
+     * Move a ficha á dereita se é posible
      *
      * @return true se o movemento da ficha é posible, se non false
      */
@@ -87,7 +87,7 @@ public class Piece {
     }
 
     /**
-     * Move squares ficha á esquerda se é posible
+     * Move a ficha á esquerda se é posible
      *
      * @return true se o movemento da ficha é posible, se non false
      */
@@ -102,7 +102,7 @@ public class Piece {
     }
 
     /**
-     * Move squares ficha squares0 abaixo se é posible
+     * Move a ficha a abaixo se é posible
      *
      * @return true se o movemento da ficha é posible, se non false
      */
@@ -117,7 +117,7 @@ public class Piece {
     }
 
     /**
-     * Rota squares ficha se é posible
+     * Rota a ficha se é posible
      *
      * @return true se o movemento da ficha é posible, se non false
      */
