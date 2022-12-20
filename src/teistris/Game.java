@@ -26,7 +26,7 @@ import java.util.HashMap;
 public class Game {
 
     HashMap<String, Square> groundSquares;
-    
+
     /**
      * Constante que define o tamaño en pixels do lado dun cadrado
      */
@@ -166,9 +166,12 @@ public class Game {
         if ((x == MAX_X) || (x < 0) || (y == MAX_Y)) {
             return false;
         }
-//        if (groundSquares.containsKey(x) && groundSquares.containsKey(y)) {
-//            return false;
-//        }
+        for (Square s : currentPiece.getSquares()) {
+            if (groundSquares.containsKey(s.getCoordinates())) {
+                return false;
+            }
+        }
+
         return true;
     }
 
