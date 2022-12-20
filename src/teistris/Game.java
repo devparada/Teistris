@@ -166,9 +166,9 @@ public class Game {
         if ((x == MAX_X) || (x < 0) || (y == MAX_Y)) {
             return false;
         }
-        if (groundSquares.containsKey(x) && groundSquares.containsKey(y)) {
-            return false;
-        }
+//        if (groundSquares.containsKey(x) && groundSquares.containsKey(y)) {
+//            return false;
+//        }
         return true;
     }
 
@@ -184,7 +184,9 @@ public class Game {
      */
     private void addPieceToGround() {
         // Engadimos os cadrados da peza ao chan
-
+        for (Square s : currentPiece.getSquares()) {
+            groundSquares.put(s.getCoordinates(), s);
+        }
         // Chamamos ao método que borra as liñas do chan que estean completas
         this.deleteCompletedLines();
     }
