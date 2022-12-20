@@ -16,6 +16,8 @@
  */
 package teistris;
 
+import java.util.HashMap;
+
 /**
  * Clase que implementa o comportamento do xogo do Tetris
  *
@@ -23,6 +25,8 @@ package teistris;
  */
 public class Game {
 
+    HashMap<String, Square> groundSquares;
+    
     /**
      * Constante que define o tamaño en pixels do lado dun cadrado
      */
@@ -104,6 +108,7 @@ public class Game {
      * @param mainWindow Referenza á ventá principal do xogo
      */
     public Game(MainWindow mainWindow) {
+        groundSquares = new HashMap();
         this.mainWindow = mainWindow;
         this.createNewPiece();
     }
@@ -159,6 +164,9 @@ public class Game {
      */
     public boolean isValidPosition(int x, int y) {
         if ((x == MAX_X) || (x < 0) || (y == MAX_Y)) {
+            return false;
+        }
+        if (groundSquares.containsKey(x) && groundSquares.containsKey(y)) {
             return false;
         }
         return true;
