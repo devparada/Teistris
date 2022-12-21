@@ -220,6 +220,13 @@ public class Game {
      * @param y Coordenada y da liña a borrar
      */
     private void deleteLine(int y) {
+        for (int x = 0; x < MAX_X; x += SQUARE_SIDE){
+        Square deletedSquare = groundSquares.remove(x + "," + y);
+        mainWindow.deleteSquare(deletedSquare.getLblSquare());
+        }
+        //for (int j = y- SQUARE_SIDE; j >=; j++) {
+        //    
+        //}
     }
 
     /**
