@@ -31,20 +31,26 @@ public class Piece {
     private Game game;
 
     /**
-     * Referenzas aos catro cadrados que forman a peza
+     * Array que referenza aos catro cadrados que forman a peza
      */
     private Square[] squares;
 
+    /**
+     * Este método recibe os datos do atributo squares
+     *
+     * @return Devolve os cadrados do atributo squares
+     */
     public Square[] getSquares() {
         return squares;
     }
 
     /**
-     * Construtor da clase, que crea os catro cadrados que forman a peza
+     * Construtor da clase, que crea os catro cadrados no array squares que
+     * forman a peza
      */
     public Piece(Game game) {
         this.game = game;
-        
+
         squares = new Square[4];
         squares[0] = new Square(Game.MAX_X / 2 - Game.SQUARE_SIDE, 0, Color.BLUE, game);
         squares[1] = new Square(Game.MAX_X / 2, 0, Color.BLUE, game);
