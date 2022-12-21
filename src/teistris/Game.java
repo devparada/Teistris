@@ -236,7 +236,11 @@ public class Game {
      * @return true se a peza actual choca cos cadrados do chan; se non false
      */
     private boolean hitPieceTheGround() {
-        // Polo momento, non facemos nada
+        for (Square s : currentPiece.getSquares()) {
+            if (groundSquares.containsKey(s.getCoordinates())) {
+                return true;
+            }
+        }
         return false;
     }
 }
