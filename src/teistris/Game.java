@@ -195,7 +195,7 @@ public class Game {
     private void deleteCompletedLines() {
         for (int y = MAX_Y - SQUARE_SIDE; y >= 0; y -= SQUARE_SIDE) {
             boolean emptyCell = false;
-            
+
             for (int x = 0; (x < MAX_X) && (!emptyCell); x += SQUARE_SIDE) {
                 if (!groundSquares.containsKey(x + "," + y)) {
                     emptyCell = true;
@@ -215,13 +215,19 @@ public class Game {
      * @param y Coordenada y da liña a borrar
      */
     private void deleteLine(int y) {
-        for (int x = 0; x < MAX_X; x += SQUARE_SIDE){
-        Square deletedSquare = groundSquares.remove(x + "," + y);
-        mainWindow.deleteSquare(deletedSquare.getLblSquare());
+        for (int x = 0; x < MAX_X; x += SQUARE_SIDE) {
+            Square deletedSquare = groundSquares.remove(x + "," + y);
+            mainWindow.deleteSquare(deletedSquare.getLblSquare());
         }
-        //for (int j = y- SQUARE_SIDE; j >=; j++) {
-        //    
-        //}
+        for (int j = y - SQUARE_SIDE; j >= 0; j -= SQUARE_SIDE) {
+            for (int x = 0; x < MAX_X; x += SQUARE_SIDE) {
+                if (groundSquares.containsKey(x + "," + j)) {
+                    Square moveSquare = groundSquares.remove(x + "," + j);
+                    moveSquare.setY(j + SQUARE_SIDE);
+                    groundSquares.put(moveSquare.getCoordinates(), moveSquare);
+                }
+            }
+        }
     }
 
     /**
