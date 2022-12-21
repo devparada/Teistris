@@ -166,12 +166,11 @@ public class Game {
         if ((x == MAX_X) || (x < 0) || (y == MAX_Y)) {
             return false;
         }
-        for (Square s : currentPiece.getSquares()) {
-            if (groundSquares.containsKey(s.getCoordinates())) {
-                return false;
-            }
-        }
 
+        if (groundSquares.containsKey(x + "," + y)) {
+            return false;
+        }
+        
         return true;
     }
 
@@ -199,7 +198,18 @@ public class Game {
      * cadrados do chan e súmase unha nova liña no número de liñas realizadas
      */
     private void deleteCompletedLines() {
-
+        for (int y = MAX_Y - SQUARE_SIDE; y >= 0; y -= SQUARE_SIDE) {
+            boolean emptyCell = false;
+            
+            for (int x = 0; (x < MAX_X) && (!emptyCell); x += SQUARE_SIDE) {
+                if (!groundSquares.containsKey(x + "," + y)) {
+                    emptyCell = true;
+                }
+            }
+            if (!emptyCell) {
+                deleteLine(y);
+            }
+        }
     }
 
     /**
@@ -210,7 +220,6 @@ public class Game {
      * @param y Coordenada y da liña a borrar
      */
     private void deleteLine(int y) {
-
     }
 
     /**
