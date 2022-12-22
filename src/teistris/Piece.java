@@ -47,6 +47,7 @@ public class Piece {
     /**
      * Construtor da clase, que crea os catro cadrados no array squares que
      * forman a peza
+     *
      * @param game
      */
     public Piece(Game game) {
