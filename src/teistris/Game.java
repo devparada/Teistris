@@ -196,6 +196,7 @@ public class Game {
         for (int y = MAX_Y - SQUARE_SIDE; y >= 0; y -= SQUARE_SIDE) {
             boolean emptyCell = false;
 
+            // Aqui localiza os cadrados que crean unha liña completa
             for (int x = 0; (x < MAX_X) && (!emptyCell); x += SQUARE_SIDE) {
                 if (!groundSquares.containsKey(x + "," + y)) {
                     emptyCell = true;
@@ -215,10 +216,12 @@ public class Game {
      * @param y Coordenada y da liña a borrar
      */
     private void deleteLine(int y) {
+        //Aqui borra os cadrados cando coinciden unha liña completa
         for (int x = 0; x < MAX_X; x += SQUARE_SIDE) {
             Square deletedSquare = groundSquares.remove(x + "," + y);
             mainWindow.deleteSquare(deletedSquare.getLblSquare());
         }
+        //Aqui move os cadrados cando se borra unha fila cara abaixo do panel do tetris
         for (int j = y - SQUARE_SIDE; j >= 0; j -= SQUARE_SIDE) {
             for (int x = 0; x < MAX_X; x += SQUARE_SIDE) {
                 if (groundSquares.containsKey(x + "," + j)) {
