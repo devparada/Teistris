@@ -103,7 +103,6 @@ public class Piece {
      * @return true se o movemento da ficha é posible, se non false
      */
     public boolean moveLeft() {
-
         for (Square s : squares) {
             if (!game.isValidPosition(s.getX() - Game.SQUARE_SIDE, s.getY())) {
                 return false;
@@ -122,7 +121,6 @@ public class Piece {
      * @return true se o movemento da ficha é posible, se non false
      */
     public boolean moveDown() {
-
         for (Square s : squares) {
             if (!game.isValidPosition(s.getX(), s.getY() + Game.SQUARE_SIDE)) {
                 return false;
