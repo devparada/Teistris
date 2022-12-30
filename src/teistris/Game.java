@@ -194,16 +194,21 @@ public class Game {
      */
     private void deleteCompletedLines() {
         for (int y = MAX_Y - SQUARE_SIDE; y >= 0; y -= SQUARE_SIDE) {
-            boolean emptyCell = false;
+            boolean completedLine = true;
 
-            // Aqui localiza os cadrados que crean unha liña completa
-            for (int x = 0; (x < MAX_X) && (!emptyCell); x += SQUARE_SIDE) {
+            // Comproba se a liña ten unha celda vacia nunha posición x
+            for (int x = 0; x < MAX_X && completedLine; x += SQUARE_SIDE) {
+                // Si nunhas coordenadas non hai ningunha peza se considera unha liña incompleta
                 if (!groundSquares.containsKey(x + "," + y)) {
-                    emptyCell = true;
+                    completedLine = false;
                 }
             }
-            if (!emptyCell) {
+
+            // Si non hai ningunha celda vacia na liña se borra a liña
+            if (completedLine) {
                 deleteLine(y);
+                // Suma 1 máis no contador de liñas eliminadas
+                numberOfLines++;
             }
         }
     }
@@ -216,17 +221,19 @@ public class Game {
      * @param y Coordenada y da liña a borrar
      */
     private void deleteLine(int y) {
-        //Aqui borra os cadrados cando coinciden unha liña completa
+        // Borra os cadrados cando coinciden unha liña completa
         for (int x = 0; x < MAX_X; x += SQUARE_SIDE) {
             Square deletedSquare = groundSquares.remove(x + "," + y);
             mainWindow.deleteSquare(deletedSquare.getLblSquare());
         }
-        //Aqui move os cadrados cando se borra unha fila cara abaixo do panel do tetris
+        // Move os cadrados cando se borra unha fila nunha posicion y máis
         for (int j = y - SQUARE_SIDE; j >= 0; j -= SQUARE_SIDE) {
             for (int x = 0; x < MAX_X; x += SQUARE_SIDE) {
                 if (groundSquares.containsKey(x + "," + j)) {
+                    // Move as pezas cara unha fila abaixo
                     Square moveSquare = groundSquares.remove(x + "," + j);
                     moveSquare.setY(j + SQUARE_SIDE);
+                    // Se engade as novas coordenadas no array groundSquares
                     groundSquares.put(moveSquare.getCoordinates(), moveSquare);
                 }
             }
