@@ -85,13 +85,16 @@ public class Piece {
      * @return true se o movemento da ficha é posible, se non false
      */
     public boolean moveRight() {
-        if (game.isValidPosition(squares[1].getX() + Game.SQUARE_SIDE, squares[1].getY())) {
-            for (Square sq : squares) {
-                sq.setX(sq.getX() + Game.SQUARE_SIDE);
+        for (Square s : squares) {
+            if (!game.isValidPosition(s.getX() + Game.SQUARE_SIDE, s.getY())) {
+                return false;
             }
-            return true;
         }
-        return false;
+
+        for (Square s : squares) {
+            s.setX(s.getX() + Game.SQUARE_SIDE);
+        }
+        return true;
     }
 
     /**
@@ -100,13 +103,17 @@ public class Piece {
      * @return true se o movemento da ficha é posible, se non false
      */
     public boolean moveLeft() {
-        if (game.isValidPosition(squares[0].getX() - Game.SQUARE_SIDE, squares[0].getY())) {
-            for (Square sq : squares) {
-                sq.setX(sq.getX() - Game.SQUARE_SIDE);
+
+        for (Square s : squares) {
+            if (!game.isValidPosition(s.getX() - Game.SQUARE_SIDE, s.getY())) {
+                return false;
             }
-            return true;
         }
-        return false;
+
+        for (Square s : squares) {
+            s.setX(s.getX() - Game.SQUARE_SIDE);
+        }
+        return true;
     }
 
     /**
@@ -115,13 +122,17 @@ public class Piece {
      * @return true se o movemento da ficha é posible, se non false
      */
     public boolean moveDown() {
-        if (game.isValidPosition(squares[3].getX(), squares[3].getY() + Game.SQUARE_SIDE)) {
-            for (Square sq : squares) {
-                sq.setY(sq.getY() + Game.SQUARE_SIDE);
+
+        for (Square s : squares) {
+            if (!game.isValidPosition(s.getX(), s.getY() + Game.SQUARE_SIDE)) {
+                return false;
             }
-            return true;
         }
-        return false;
+
+        for (Square s : squares) {
+            s.setY(s.getY() + Game.SQUARE_SIDE);
+        }
+        return true;
     }
 
     /**
