@@ -196,15 +196,14 @@ public class Game {
         for (int y = MAX_Y - SQUARE_SIDE; y >= 0; y -= SQUARE_SIDE) {
             boolean completedLine = true;
 
-            // Comproba se a liña ten unha celda vacia nunha posición x
+            // Comproba se na liña hai un espazo onde non hai unha peza
             for (int x = 0; x < MAX_X && completedLine; x += SQUARE_SIDE) {
-                // Si nunhas coordenadas non hai ningunha peza se considera unha liña incompleta
                 if (!groundSquares.containsKey(x + "," + y)) {
                     completedLine = false;
                 }
             }
 
-            // Si non hai ningunha celda vacia na liña se borra a liña
+            // Si a liña está completa se borra a liña
             if (completedLine) {
                 deleteLine(y);
                 // Suma 1 máis no contador de liñas eliminadas
