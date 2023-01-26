@@ -15,7 +15,7 @@ import java.awt.Color;
  * Parada de la Fuente
  */
 public class BarPiece extends Piece {
-    
+
     public BarPiece(Game game) {
         this.game = game;
 
@@ -27,5 +27,37 @@ public class BarPiece extends Piece {
                 Color.YELLOW, game);
         squares[3] = new Square(Game.MAX_X / 2, Game.SQUARE_SIDE * 3, Color.YELLOW, game);
     }
-    
+
+    @Override
+    public boolean rotate() {
+
+        int centerX = squares[1].getX();
+        int centerY = squares[1].getY();
+
+        for (int i = 0; i < squares.length; i++) {
+            int x = squares[i].getX();
+            int y = squares[i].getY();
+
+            int newX = centerX + (y - centerY);
+            int newY = centerY - (x - centerX);
+
+            if (!game.isValidPosition(newX, newY)) {
+                return false;
+            }
+        }
+
+        for (int i = 0; i < squares.length; i++) {
+            int x = squares[i].getX();
+            int y = squares[i].getY();
+
+            int newX = centerX + (y - centerY);
+            int newY = centerY - (x - centerX);
+
+            squares[i].setX(newX);
+            squares[i].setY(newY);
+        }
+
+        return true;
+    }
+
 }
