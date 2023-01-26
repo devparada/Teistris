@@ -24,7 +24,8 @@ import javax.swing.border.BevelBorder;
 /**
  * Clase que implementa un cadrado do xogo do Tetris
  *
- * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
+ * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
+ * Parada de la Fuente
  */
 public class Square {
 

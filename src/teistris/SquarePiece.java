@@ -11,7 +11,8 @@ import java.awt.Color;
 
 /**
  *
- * @author Alejandro Martínez Domínguez
+ * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
+ * Parada de la Fuente
  */
 public class SquarePiece extends Piece {
     

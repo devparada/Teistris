@@ -22,7 +22,9 @@ import model.Game;
 
 /**
  * Clase que implementa a ventá principal do xogo do Tetris
- * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
+ * 
+ * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
+ * Parada de la Fuente
  */
 public class MainWindow extends javax.swing.JFrame {
 
