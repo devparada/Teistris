@@ -14,10 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package teistris;
+package view;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import model.Game;
 
 /**
  * Clase que implementa a ventá principal do xogo do Tetris

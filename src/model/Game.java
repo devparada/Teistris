@@ -14,9 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package teistris;
+package model;
 
 import java.util.HashMap;
+import teistris.BarPiece;
+import teistris.LPiece;
+import view.MainWindow;
+import teistris.SquarePiece;
+import teistris.TPiece;
 
 /**
  * Clase que implementa o comportamento do xogo do Tetris
@@ -173,7 +178,26 @@ public class Game {
      * Crea unha nova peza e a establece como peza actual do xogo
      */
     private void createNewPiece() {
-        currentPiece = new Piece(this);
+        int pieceType = new java.util.Random().nextInt(4);
+
+        switch(pieceType){
+            case 0:
+                SquarePiece square = new SquarePiece(this);
+                currentPiece = square;
+                break;
+            case 1:
+                LPiece l = new LPiece(this);
+                currentPiece = l;
+                break;
+            case 2:
+                BarPiece bar = new BarPiece(this);
+                currentPiece = bar;
+                break;
+            case 3:
+                TPiece t = new TPiece(this);
+                currentPiece = t;
+                break;
+        }
     }
 
     /**

@@ -14,26 +14,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package teistris;
-
-import java.awt.Color;
+package model;
 
 /**
  * Clase que implementa a peza cadrada do xogo do Tetris
  *
  * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
  */
-public class Piece {
+public abstract class Piece {
 
     /**
      * Referenza ao obxecto xogo
      */
-    private Game game;
+    protected Game game;
 
     /**
      * Array que referenza aos catro cadrados que forman a peza
      */
-    private Square[] squares;
+    protected Square[] squares;
 
     /**
      * Este método recibe os datos do atributo squares
@@ -42,23 +40,6 @@ public class Piece {
      */
     public Square[] getSquares() {
         return squares;
-    }
-
-    /**
-     * Construtor da clase, que crea os catro cadrados no array squares que
-     * forman a peza
-     *
-     * @param game
-     */
-    public Piece(Game game) {
-        this.game = game;
-
-        squares = new Square[4];
-        squares[0] = new Square(Game.MAX_X / 2 - Game.SQUARE_SIDE, 0, Color.BLUE, game);
-        squares[1] = new Square(Game.MAX_X / 2, 0, Color.BLUE, game);
-        squares[2] = new Square(Game.MAX_X / 2 - Game.SQUARE_SIDE, Game.SQUARE_SIDE,
-                Color.BLUE, game);
-        squares[3] = new Square(Game.MAX_X / 2, Game.SQUARE_SIDE, Color.BLUE, game);
     }
 
     /**
