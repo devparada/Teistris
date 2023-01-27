@@ -218,22 +218,19 @@ public class Game {
      * cadrados do chan e súmase unha nova liña no número de liñas realizadas
      */
     private void deleteCompletedLines() {
-        for (int y = MAX_Y - SQUARE_SIDE; y >= 0; y -= SQUARE_SIDE) {
-            boolean completedLine = true;
 
-            // Comproba se na liña hai un espazo onde non hai unha peza
-            for (int x = 0; x < MAX_X && completedLine; x += SQUARE_SIDE) {
-                if (!groundSquares.containsKey(x + "," + y)) {
-                    completedLine = false;
+        for (int x = 0; x < MAX_Y; x = (x + SQUARE_SIDE)) {
+            int line = 0;
+            for (int y = 0; y <= MAX_X; y = (y + SQUARE_SIDE)) {
+                String coordinates = y + "," + x;
+                if (groundSquares.containsKey(coordinates)) {
+                    line = (line + SQUARE_SIDE);
                 }
             }
-
-            // Si a liña está completa se borra a liña
-            if (completedLine) {
-                deleteLine(y);
-                // Suma 1 máis no contador de liñas eliminadas
-                numberOfLines++;
+            if (line == MAX_X) {
+                deleteLine(x);
             }
+
         }
     }
 
