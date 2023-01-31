@@ -229,7 +229,8 @@ public class Game {
             }
             if (line == MAX_X) {
                 deleteLine(x);
-                mainWindow.showNumberOfLines(++numberOfLines);
+                numberOfLines++;
+                mainWindow.showNumberOfLines(numberOfLines);
             }
 
         }
