@@ -35,8 +35,8 @@ public class LPiece extends Piece {
     @Override
     public boolean rotate() {
 
-        int centerX = squares[1].getX();
-        int centerY = squares[1].getY();
+        int centerX = squares[3].getX();
+        int centerY = squares[3].getY();
 
         for (int i = 0; i < squares.length; i++) {
             int x = squares[i].getX();
