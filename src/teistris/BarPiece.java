@@ -16,6 +16,10 @@ import java.awt.Color;
  */
 public class BarPiece extends Piece {
 
+    /**
+     *
+     * @param game
+     */
     public BarPiece(Game game) {
         this.game = game;
 
@@ -56,7 +60,6 @@ public class BarPiece extends Piece {
             squares[i].setX(newX);
             squares[i].setY(newY);
         }
-
         return true;
     }
 

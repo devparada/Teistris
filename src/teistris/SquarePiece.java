@@ -18,6 +18,7 @@ public class SquarePiece extends Piece {
     
     /**
      * Construtor da clase, que crea os catro cadrados que forman a peza
+     * @param game
      */
     public SquarePiece(Game game) {
         this.game = game;

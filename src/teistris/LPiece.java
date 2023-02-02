@@ -16,6 +16,10 @@ import java.awt.Color;
  */
 public class LPiece extends Piece {
     
+    /**
+     *
+     * @param game
+     */
     public LPiece(Game game) {
         this.game = game;
 
@@ -31,8 +35,8 @@ public class LPiece extends Piece {
     @Override
     public boolean rotate() {
 
-        int centerX = squares[3].getX();
-        int centerY = squares[3].getY();
+        int centerX = squares[1].getX();
+        int centerY = squares[1].getY();
 
         for (int i = 0; i < squares.length; i++) {
             int x = squares[i].getX();
@@ -56,7 +60,6 @@ public class LPiece extends Piece {
             squares[i].setX(newX);
             squares[i].setY(newY);
         }
-
         return true;
     }
     

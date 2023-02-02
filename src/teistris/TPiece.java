@@ -15,7 +15,11 @@ import java.awt.Color;
  * Parada de la Fuente
  */
 public class TPiece extends Piece {
-    
+
+    /**
+     *
+     * @param game
+     */
     public TPiece(Game game) {
         this.game = game;
 
@@ -27,12 +31,12 @@ public class TPiece extends Piece {
                 Color.RED, game);
         squares[3] = new Square(Game.MAX_X / 2 - Game.SQUARE_SIDE, Game.SQUARE_SIDE, Color.RED, game);
     }
-    
+
     @Override
     public boolean rotate() {
 
-        int centerX = squares[3].getX();
-        int centerY = squares[3].getY();
+        int centerX = squares[1].getX();
+        int centerY = squares[1].getY();
 
         for (int i = 0; i < squares.length; i++) {
             int x = squares[i].getX();
@@ -56,8 +60,7 @@ public class TPiece extends Piece {
             squares[i].setX(newX);
             squares[i].setY(newY);
         }
-
         return true;
     }
-    
+
 }
