@@ -10,14 +10,16 @@ import model.Piece;
 import java.awt.Color;
 
 /**
+ * Esta clase implementa o constructor da clase Piece e é subclase de Piece
  *
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
  */
 public class SquarePiece extends Piece {
-    
+
     /**
      * Construtor da clase, que crea os catro cadrados que forman a peza
+     *
      * @param game
      */
     public SquarePiece(Game game) {
@@ -31,5 +33,5 @@ public class SquarePiece extends Piece {
                 Color.BLUE, game);
         squares[3] = new Square(Game.MAX_X / 2, Game.SQUARE_SIDE, Color.BLUE, game);
     }
-    
+
 }

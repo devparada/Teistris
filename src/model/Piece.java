@@ -17,7 +17,7 @@
 package model;
 
 /**
- * Clase que implementa a peza cadrada do xogo do Tetris
+ * Clase abstracta que implementa a peza cadrada do xogo do Tetris
  *
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
@@ -124,5 +124,5 @@ public abstract class Piece {
         // A rotación da ficha cadrada non supón ningunha variación na ficha,
         // por iso simplemente devolvemos true
         return true;
-    } 
+    }
 }

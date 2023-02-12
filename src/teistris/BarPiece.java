@@ -10,6 +10,8 @@ import model.Piece;
 import java.awt.Color;
 
 /**
+ * Esta clase implementa a peza BarPiece, é subclase de Piece e sobreescribe o
+ * método rotate
  *
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
@@ -17,6 +19,7 @@ import java.awt.Color;
 public class BarPiece extends Piece {
 
     /**
+     * Constructor da clase BarPiece
      *
      * @param game
      */
@@ -32,6 +35,11 @@ public class BarPiece extends Piece {
         squares[3] = new Square(Game.MAX_X / 2, Game.SQUARE_SIDE * 3, Color.YELLOW, game);
     }
 
+    /**
+     * Rota a peza BarPiece
+     *
+     * @return Devolve true o false se a peza pode rotar o non
+     */
     @Override
     public boolean rotate() {
 

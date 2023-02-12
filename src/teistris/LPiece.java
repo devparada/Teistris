@@ -10,13 +10,16 @@ import model.Piece;
 import java.awt.Color;
 
 /**
+ * Esta clase implementa a peza LPiece, é subclase de Piece e sobreescribe o
+ * método rotate
  *
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
  */
 public class LPiece extends Piece {
-    
+
     /**
+     * Constructor da clase LPiece
      *
      * @param game
      */
@@ -26,12 +29,17 @@ public class LPiece extends Piece {
         squares = new Square[4];
 
         squares[0] = new Square(Game.MAX_X / 2 - Game.SQUARE_SIDE, 0, Color.GREEN, game);
-        squares[1] = new Square(Game.MAX_X / 2, Game.SQUARE_SIDE*2, Color.GREEN, game);
+        squares[1] = new Square(Game.MAX_X / 2, Game.SQUARE_SIDE * 2, Color.GREEN, game);
         squares[2] = new Square(Game.MAX_X / 2 - Game.SQUARE_SIDE, Game.SQUARE_SIDE,
                 Color.GREEN, game);
         squares[3] = new Square(Game.MAX_X / 2 - Game.SQUARE_SIDE, Game.SQUARE_SIDE * 2, Color.GREEN, game);
     }
-    
+
+    /**
+     * Rota a peza LPiece
+     *
+     * @return Devolve true o false se a peza pode rotar o non
+     */
     @Override
     public boolean rotate() {
 
@@ -62,5 +70,5 @@ public class LPiece extends Piece {
         }
         return true;
     }
-    
+
 }

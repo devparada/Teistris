@@ -10,6 +10,8 @@ import model.Piece;
 import java.awt.Color;
 
 /**
+ * Esta clase implementa a peza TPiece, é subclase de Piece e sobreescribe o
+ * método rotate
  *
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
@@ -17,6 +19,7 @@ import java.awt.Color;
 public class TPiece extends Piece {
 
     /**
+     * Constructor da clase TPiece
      *
      * @param game
      */
@@ -32,6 +35,11 @@ public class TPiece extends Piece {
         squares[3] = new Square(Game.MAX_X / 2 - Game.SQUARE_SIDE, Game.SQUARE_SIDE, Color.RED, game);
     }
 
+    /**
+     * Rota a peza TPiece
+     *
+     * @return Devolve true o false se a peza pode rotar o non
+     */
     @Override
     public boolean rotate() {
 
