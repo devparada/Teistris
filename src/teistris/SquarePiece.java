@@ -18,7 +18,7 @@ import java.awt.Color;
 public class SquarePiece extends Piece {
 
     /**
-     * Construtor da clase, que crea os catro cadrados que forman a peza
+     * Construtor da clase SquarePiece
      *
      * @param game
      */
