@@ -10,7 +10,7 @@ import model.Piece;
 import java.awt.Color;
 
 /**
- * Esta clase implementa o constructor da clase Piece e é subclase de Piece
+ * Esta clase implementa a peza SquarePiece e é subclase de Piece
  *
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
