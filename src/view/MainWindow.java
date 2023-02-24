@@ -18,15 +18,19 @@ package view;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import javax.swing.Timer;
 import model.Game;
 
 /**
  * Clase que implementa a ventá principal do xogo do Tetris
- * 
+ *
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
  */
 public class MainWindow extends javax.swing.JFrame {
+
+    private Timer timer;
 
     /**
      * Creates new form MainWindow
@@ -86,6 +90,25 @@ public class MainWindow extends javax.swing.JFrame {
         tglbtnPause.setSelected(false);
         // Establecemos o número de liñas que se mostran na ventá a cero
         lblNumberOfLines.setText("0");
+
+        timer = new Timer(1000, null);
+        timer.start();
+
+        timer.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+
+                if (game == null || game.isPaused()) {
+                    timer.stop();
+                } else {
+                    game.movePieceDown();
+                }
+
+                timer.start();
+
+            }
+        });
+
     }
 
     /**

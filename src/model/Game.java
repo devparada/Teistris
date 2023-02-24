@@ -108,6 +108,24 @@ public class Game {
         this.numberOfLines = numberOfLines;
     }
 
+    public HashMap<String, Square> getGroundSquares() {
+        return groundSquares;
+    }
+
+    public void setGroundSquares(HashMap<String, Square> groundSquares) {
+        this.groundSquares = groundSquares;
+    }
+
+    public Piece getCurrentPiece() {
+        return currentPiece;
+    }
+
+    public void setCurrentPiece(Piece currentPiece) {
+        this.currentPiece = currentPiece;
+    }
+
+    
+    
     /**
      * Construtor da clase, que crea unha primeira peza
      *
