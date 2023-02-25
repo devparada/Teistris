@@ -20,7 +20,6 @@ import java.awt.KeyboardFocusManager;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 import model.Game;
 

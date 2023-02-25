@@ -12,7 +12,8 @@ import java.awt.event.KeyEvent;
  *
  * Esta clase implementa KeyEventDispatcher e captura os eventos das teclas
  *
- * @author Raúl Parada de la Fuente
+ * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
+ * Parada de la Fuente
  */
 public class KeyDispatcher implements KeyEventDispatcher {
 
