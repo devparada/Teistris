@@ -16,6 +16,7 @@
  */
 package view;
 
+import java.awt.KeyboardFocusManager;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
@@ -135,7 +136,6 @@ public class MainWindow extends javax.swing.JFrame {
      * Inicia un novo xogo
      */
     private void startGame() {
-
         // Condición if para eliminar timers antiguos que podan seguir funcionando
         if (timer != null) {
             timer.stop();
@@ -149,6 +149,8 @@ public class MainWindow extends javax.swing.JFrame {
         jTglBtnPause.setSelected(false);
         // Establecemos o número de liñas que se mostran na ventá a cero
         jLblNumberOfLines.setText("0");
+
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new TetrisKeyListener(game));
 
         // 1000 milesegundos son 1 segundo e o timer ten o listener que é unha lambda
         timer = new Timer(counter, (ActionEvent ae) -> {
@@ -327,6 +329,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPnlGame.setBackground(java.awt.Color.white);
         jPnlGame.setPreferredSize(new java.awt.Dimension(200, 300));
+        jPnlGame.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPnlGameKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPnlGameLayout = new javax.swing.GroupLayout(jPnlGame);
         jPnlGame.setLayout(jPnlGameLayout);
@@ -486,6 +493,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void jBtnRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRotateActionPerformed
         // Ao picar no botón de "Rotar", chamamos ao obxecto xogo para que 
         // rote a peza actual
+        jPnlGame.requestFocus();
         if (game != null) {
             game.rotatePiece();
         }
@@ -523,6 +531,11 @@ public class MainWindow extends javax.swing.JFrame {
         jDlgCredits.setVisible(false);
     }//GEN-LAST:event_jBtnBackActionPerformed
 
+    private void jPnlGameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPnlGameKeyPressed
+        requestFocus();
+        System.out.println("AAAA");
+    }//GEN-LAST:event_jPnlGameKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -537,16 +550,24 @@ public class MainWindow extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindow.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindow.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindow.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindow.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
