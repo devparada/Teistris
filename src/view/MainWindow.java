@@ -30,16 +30,65 @@ import model.Game;
  */
 public class MainWindow extends javax.swing.JFrame {
 
+    /**
+     * Timer de Swing que é unha conta atras
+     */
     private Timer timer;
+
+    /**
+     * Contador do timer
+     */
+    private Integer counter;
+
+    /**
+     * Referenza ao obxecto do xogo actual
+     */
+    private Game game;
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
+        game = null;
+        counter = 1000;
         initComponents();
     }
 
-    private Game game = null; // Referenza ao obxecto do xogo actual
+    /**
+     * Obtén o valor da variable counter
+     *
+     * @return Devolve o valor da variable counter
+     */
+    public Integer getCounter() {
+        return counter;
+    }
+
+    /**
+     * Modifica o valor da variable counter
+     *
+     * @param counter O valor da variable counter
+     */
+    public void setCounter(Integer counter) {
+        this.counter = counter;
+    }
+
+    /**
+     * Obtén o valor da variable timer
+     *
+     * @return Devolve o valor da variable timer
+     */
+    public Timer getTimer() {
+        return timer;
+    }
+
+    /**
+     * Modifica o valor da variable timer
+     *
+     * @param timer O valor da variable timer
+     */
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
 
     /**
      * Pinta un cadrado no panel de cadrados
@@ -67,7 +116,11 @@ public class MainWindow extends javax.swing.JFrame {
      * @param numberOfLines Número de liñas feitas no xogo
      */
     public void showNumberOfLines(int numberOfLines) {
-        lblNumberOfLines.setText(String.valueOf(numberOfLines));
+        if (game.getNumberOfLines() == numberOfLines) {
+            counter = counter / 2;
+        }
+
+        jLblNumberOfLines.setText(String.valueOf(numberOfLines));
     }
 
     /**
@@ -82,17 +135,35 @@ public class MainWindow extends javax.swing.JFrame {
      * Inicia un novo xogo
      */
     private void startGame() {
+
+        // Condición if para eliminar timers antiguos que podan seguir funcionando
+        if (timer != null) {
+            timer.stop();
+        }
+
         // Limpamos todo o que puidese haber pintado no panel do xogo
         jPnlGame.removeAll();
         // Creamos un novo obxecto xogo
         game = new Game(this);
         // Desactivamos o botón de pausa
-        tglbtnPause.setSelected(false);
+        jTglBtnPause.setSelected(false);
         // Establecemos o número de liñas que se mostran na ventá a cero
-        lblNumberOfLines.setText("0");
+        jLblNumberOfLines.setText("0");
 
-        // 1000 milesegundos son 1 segundo
-        timer = new Timer(1000, (ActionEvent ae) -> {
+        // 1000 milesegundos son 1 segundo e o timer ten o listener que é unha lambda
+        timer = new Timer(counter, (ActionEvent ae) -> {
+
+            /*
+            É necesario está constante porque está dentro dunha lambda e nas lambda
+            soamente se adminten variables que non cambie o seu valor (final).
+            A variable counter cambia de valor antes de que se cree e está constante
+            se crea e se elimina cada segundo no timer
+             */
+            final Integer counterText = counter;
+
+            // Mostra o timer que queda na partida de forma actualizada
+            jLblTimer.setText(counterText.toString());
+
             // Si game é null (é cando remata unha partida) o é pausada a partida
             if (game == null || game.isPaused()) {
                 timer.stop();
@@ -126,21 +197,25 @@ public class MainWindow extends javax.swing.JFrame {
         jLblTextCredits = new javax.swing.JLabel();
         jBtnToCredits = new javax.swing.JButton();
         jBtnNewGame = new javax.swing.JButton();
+        jTglBtnPause = new javax.swing.JToggleButton();
         jPnlGame = new javax.swing.JPanel();
-        btnRotate = new javax.swing.JButton();
-        btnRight = new javax.swing.JButton();
-        btnLeft = new javax.swing.JButton();
-        btnDown = new javax.swing.JButton();
-        tglbtnPause = new javax.swing.JToggleButton();
-        lblLines = new javax.swing.JLabel();
-        lblNumberOfLines = new javax.swing.JLabel();
+        jBtnRotate = new javax.swing.JButton();
+        jBtnRight = new javax.swing.JButton();
+        jBtnLeft = new javax.swing.JButton();
+        jBtnDown = new javax.swing.JButton();
+        jLblTxtTimer = new javax.swing.JLabel();
+        jLblTimer = new javax.swing.JLabel();
+        jLblLines = new javax.swing.JLabel();
+        jLblNumberOfLines = new javax.swing.JLabel();
 
         jDlgCredits.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDlgCredits.setTitle("Credits");
         jDlgCredits.setLocation(new java.awt.Point(0, 0));
         jDlgCredits.setMinimumSize(new java.awt.Dimension(400, 300));
+        jDlgCredits.setName(""); // NOI18N
 
         jPnlCredits.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPnlCredits.setName(""); // NOI18N
 
         jLblCreditsTeistris.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLblCreditsTeistris.setText("Teistris de :");
@@ -241,6 +316,15 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        jTglBtnPause.setText("Pausa");
+        jTglBtnPause.setToolTipText("");
+        jTglBtnPause.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTglBtnPause.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTglBtnPauseActionPerformed(evt);
+            }
+        });
+
         jPnlGame.setBackground(java.awt.Color.white);
         jPnlGame.setPreferredSize(new java.awt.Dimension(200, 300));
 
@@ -255,121 +339,132 @@ public class MainWindow extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        btnRotate.setText("Rotar");
-        btnRotate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRotate.addActionListener(new java.awt.event.ActionListener() {
+        jBtnRotate.setText("Rotar");
+        jBtnRotate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnRotate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRotateActionPerformed(evt);
+                jBtnRotateActionPerformed(evt);
             }
         });
 
-        btnRight.setText("Dereita");
-        btnRight.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRight.addActionListener(new java.awt.event.ActionListener() {
+        jBtnRight.setText("Dereita");
+        jBtnRight.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnRight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRightActionPerformed(evt);
+                jBtnRightActionPerformed(evt);
             }
         });
 
-        btnLeft.setText("Esquerda");
-        btnLeft.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLeft.addActionListener(new java.awt.event.ActionListener() {
+        jBtnLeft.setText("Esquerda");
+        jBtnLeft.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnLeft.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLeftActionPerformed(evt);
+                jBtnLeftActionPerformed(evt);
             }
         });
 
-        btnDown.setText("Abaixo");
-        btnDown.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDown.addActionListener(new java.awt.event.ActionListener() {
+        jBtnDown.setText("Abaixo");
+        jBtnDown.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnDown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDownActionPerformed(evt);
+                jBtnDownActionPerformed(evt);
             }
         });
 
-        tglbtnPause.setText("Pausa");
-        tglbtnPause.setToolTipText("");
-        tglbtnPause.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tglbtnPause.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tglbtnPauseActionPerformed(evt);
-            }
-        });
+        jLblTxtTimer.setText("Timer:");
 
-        lblLines.setText("Liñas:");
+        jLblTimer.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        lblNumberOfLines.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLblLines.setText("Liñas:");
+        jLblLines.setMaximumSize(new java.awt.Dimension(26, 15));
+        jLblLines.setMinimumSize(new java.awt.Dimension(26, 15));
+
+        jLblNumberOfLines.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLblTextCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBtnToCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(95, 95, 95)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
+                        .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBtnLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
-                                .addComponent(btnDown, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jBtnDown, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(90, 90, 90)
-                                .addComponent(btnRight, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jBtnRight, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
-                                .addComponent(btnRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jBtnRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addComponent(jPnlGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(105, 105, 105)
-                                .addComponent(jBtnToCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLblTextCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPnlGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblLines, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jBtnNewGame, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblNumberOfLines, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tglbtnPause, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                                        .addComponent(jLblLines, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLblNumberOfLines, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLblTxtTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTglBtnPause, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLblTextCredits)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtnToCredits)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBtnNewGame)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tglbtnPause)
-                        .addGap(214, 214, 214)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblLines)
-                            .addComponent(lblNumberOfLines, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTglBtnPause)
+                        .addGap(94, 94, 94)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLblTxtTimer)
+                            .addComponent(jLblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(104, 104, 104)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLblLines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLblNumberOfLines, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPnlGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(btnLeft))
+                        .addComponent(jBtnLeft))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(btnDown))
+                        .addComponent(jBtnDown))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(btnRight))
-                    .addComponent(btnRotate)))
+                        .addComponent(jBtnRight))
+                    .addComponent(jBtnRotate)))
         );
+
+        getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -380,45 +475,45 @@ public class MainWindow extends javax.swing.JFrame {
         startGame();
     }//GEN-LAST:event_jBtnNewGameActionPerformed
 
-    private void tglbtnPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglbtnPauseActionPerformed
+    private void jTglBtnPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTglBtnPauseActionPerformed
         // Ao picar no botón de "Pausa", chamamos ao obxecto xogo para 
         // establecer o atributo de pausa no estado do botón
         if (game != null) {
-            game.setPaused(tglbtnPause.isSelected());
+            game.setPaused(jTglBtnPause.isSelected());
         }
-    }//GEN-LAST:event_tglbtnPauseActionPerformed
+    }//GEN-LAST:event_jTglBtnPauseActionPerformed
 
-    private void btnRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRotateActionPerformed
+    private void jBtnRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRotateActionPerformed
         // Ao picar no botón de "Rotar", chamamos ao obxecto xogo para que 
         // rote a peza actual
         if (game != null) {
             game.rotatePiece();
         }
-    }//GEN-LAST:event_btnRotateActionPerformed
+    }//GEN-LAST:event_jBtnRotateActionPerformed
 
-    private void btnLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeftActionPerformed
+    private void jBtnLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLeftActionPerformed
         // Ao picar no botón de "Esquerda", chamamos ao obxecto xogo para que
         // se mova a peza actual á esquerda
         if (game != null) {
             game.movePieceLeft();
         }
-    }//GEN-LAST:event_btnLeftActionPerformed
+    }//GEN-LAST:event_jBtnLeftActionPerformed
 
-    private void btnRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRightActionPerformed
+    private void jBtnRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRightActionPerformed
         // Ao picar no botón de "Dereita", chamamos ao obxecto xogo para que
         // se mova a peza actual á dereita
         if (game != null) {
             game.movePieceRight();
         }
-    }//GEN-LAST:event_btnRightActionPerformed
+    }//GEN-LAST:event_jBtnRightActionPerformed
 
-    private void btnDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownActionPerformed
+    private void jBtnDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDownActionPerformed
         // Ao picar no botón de "Abaixo", chamamos ao obxecto xogo para que
         // se mova a peza actual cara abaixo
         if (game != null) {
             game.movePieceDown();
         }
-    }//GEN-LAST:event_btnDownActionPerformed
+    }//GEN-LAST:event_jBtnDownActionPerformed
 
     private void jBtnToCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToCreditsActionPerformed
         jDlgCredits.setVisible(true);
@@ -465,23 +560,25 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDown;
-    private javax.swing.JButton btnLeft;
-    private javax.swing.JButton btnRight;
-    private javax.swing.JButton btnRotate;
     private javax.swing.JButton jBtnBack;
+    private javax.swing.JButton jBtnDown;
+    private javax.swing.JButton jBtnLeft;
     private javax.swing.JButton jBtnNewGame;
+    private javax.swing.JButton jBtnRight;
+    private javax.swing.JButton jBtnRotate;
     private javax.swing.JButton jBtnToCredits;
     private javax.swing.JDialog jDlgCredits;
     private javax.swing.JLabel jLblCredits1;
     private javax.swing.JLabel jLblCredits2;
     private javax.swing.JLabel jLblCredits3;
     private javax.swing.JLabel jLblCreditsTeistris;
+    private javax.swing.JLabel jLblLines;
+    private javax.swing.JLabel jLblNumberOfLines;
     private javax.swing.JLabel jLblTextCredits;
+    private javax.swing.JLabel jLblTimer;
+    private javax.swing.JLabel jLblTxtTimer;
     private javax.swing.JPanel jPnlCredits;
     private javax.swing.JPanel jPnlGame;
-    private javax.swing.JLabel lblLines;
-    private javax.swing.JLabel lblNumberOfLines;
-    private javax.swing.JToggleButton tglbtnPause;
+    private javax.swing.JToggleButton jTglBtnPause;
     // End of variables declaration//GEN-END:variables
 }
