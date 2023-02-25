@@ -319,9 +319,6 @@
           <Dimension value="[200, 300]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPnlGameKeyPressed"/>
-      </Events>
 
       <Layout>
         <DimensionLayout dim="0">

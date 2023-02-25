@@ -20,6 +20,7 @@ import java.awt.KeyboardFocusManager;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 import model.Game;
 
@@ -150,7 +151,8 @@ public class MainWindow extends javax.swing.JFrame {
         // Establecemos o número de liñas que se mostran na ventá a cero
         jLblNumberOfLines.setText("0");
 
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new TetrisKeyListener(game));
+        // Establece o Listener na clase KeyDispatcher e se capturan allí as teclas
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyDispatcher(game));
 
         // 1000 milesegundos son 1 segundo e o timer ten o listener que é unha lambda
         timer = new Timer(counter, (ActionEvent ae) -> {
@@ -329,11 +331,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPnlGame.setBackground(java.awt.Color.white);
         jPnlGame.setPreferredSize(new java.awt.Dimension(200, 300));
-        jPnlGame.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPnlGameKeyPressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPnlGameLayout = new javax.swing.GroupLayout(jPnlGame);
         jPnlGame.setLayout(jPnlGameLayout);
@@ -530,11 +527,6 @@ public class MainWindow extends javax.swing.JFrame {
     private void jBtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBackActionPerformed
         jDlgCredits.setVisible(false);
     }//GEN-LAST:event_jBtnBackActionPerformed
-
-    private void jPnlGameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPnlGameKeyPressed
-        requestFocus();
-        System.out.println("AAAA");
-    }//GEN-LAST:event_jPnlGameKeyPressed
 
     /**
      * @param args the command line arguments

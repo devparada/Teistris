@@ -10,30 +10,35 @@ import java.awt.event.KeyEvent;
 
 /**
  *
+ * Esta clase implementa KeyEventDispatcher e captura os eventos das teclas
+ *
  * @author Raúl Parada de la Fuente
  */
-public class TetrisKeyListener implements KeyEventDispatcher {
+public class KeyDispatcher implements KeyEventDispatcher {
 
     /**
-     *
+     * Referenza ao obxecto do xogo actual
      */
     private Game game;
 
     /**
+     * Constructor da clase TetrisKeyListener
      *
      * @param game
      */
-    public TetrisKeyListener(Game game) {
+    public KeyDispatcher(Game game) {
         this.game = game;
     }
 
     /**
+     * Captura os eventos das teclas e mediante un switch fai cada cousa
      *
-     * @param e
-     * @return
+     * @param e o evento dunha tecla
+     * @return Devolve false para que actué sempre
      */
     @Override
     public boolean dispatchKeyEvent(KeyEvent e) {
+        // Si o xogo non está pausado
         if (!game.isPaused()) {
             if (e.getID() == KeyEvent.KEY_PRESSED) {
                 switch (e.getKeyCode()) {
