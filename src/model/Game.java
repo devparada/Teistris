@@ -124,8 +124,6 @@ public class Game {
         this.currentPiece = currentPiece;
     }
 
-    
-    
     /**
      * Construtor da clase, que crea unha primeira peza
      *
@@ -199,7 +197,7 @@ public class Game {
     private void createNewPiece() {
         int pieceType = new java.util.Random().nextInt(4);
 
-        switch(pieceType){
+        switch (pieceType) {
             case 0:
                 SquarePiece square = new SquarePiece(this);
                 currentPiece = square;
