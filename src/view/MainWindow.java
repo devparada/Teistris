@@ -21,7 +21,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import javax.swing.Timer;
+
 import model.Game;
+import model.KeyDispatcher;
 
 /**
  * Clase que implementa a ventá principal do xogo do Tetris
@@ -216,9 +218,12 @@ public class MainWindow extends javax.swing.JFrame {
         jDlgCredits.setLocation(new java.awt.Point(0, 0));
         jDlgCredits.setMinimumSize(new java.awt.Dimension(400, 300));
         jDlgCredits.setName(""); // NOI18N
+        jDlgCredits.setPreferredSize(new java.awt.Dimension(400, 300));
+        jDlgCredits.setResizable(false);
 
         jPnlCredits.setMinimumSize(new java.awt.Dimension(0, 0));
         jPnlCredits.setName(""); // NOI18N
+        jPnlCredits.setPreferredSize(new java.awt.Dimension(400, 300));
 
         jLblCreditsTeistris.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLblCreditsTeistris.setText("Teistris de :");
@@ -254,7 +259,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPnlCreditsLayout.createSequentialGroup()
                 .addGroup(jPnlCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPnlCreditsLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
+                        .addGap(97, 97, 97)
                         .addGroup(jPnlCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLblCreditsTeistris, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLblCredits1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,12 +268,12 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(jPnlCreditsLayout.createSequentialGroup()
                         .addGap(169, 169, 169)
                         .addComponent(jBtnBack)))
-                .addGap(104, 104, 104))
+                .addGap(96, 96, 96))
         );
         jPnlCreditsLayout.setVerticalGroup(
             jPnlCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlCreditsLayout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addGap(92, 92, 92)
                 .addComponent(jLblCreditsTeistris)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLblCredits1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,7 +283,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jLblCredits3)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnBack)
-                .addGap(80, 80, 80))
+                .addGap(92, 92, 92))
         );
 
         javax.swing.GroupLayout jDlgCreditsLayout = new javax.swing.GroupLayout(jDlgCredits.getContentPane());
@@ -300,8 +305,9 @@ public class MainWindow extends javax.swing.JFrame {
         setName(""); // NOI18N
         setResizable(false);
 
+        jLblTextCredits.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLblTextCredits.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLblTextCredits.setText("Para ver os creditos do Teistris presione o botón Creditos:");
+        jLblTextCredits.setText("Teistris");
 
         jBtnToCredits.setText("Creditos");
         jBtnToCredits.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -391,12 +397,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLblTextCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBtnToCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(95, 95, 95)))
+                    .addComponent(jLblTextCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,8 +409,10 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addGap(90, 90, 90)
                                 .addComponent(jBtnRight, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(jBtnRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jBtnToCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jBtnRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPnlGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,13 +432,13 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTglBtnPause, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jLblTextCredits)
+                .addContainerGap()
+                .addComponent(jLblTextCredits, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtnToCredits)
                 .addGap(18, 18, 18)
