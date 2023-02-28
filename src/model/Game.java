@@ -44,95 +44,124 @@ public class Game {
     /**
      * Constante que define o valor máximo da coordenada y no panel de cadrados
      */
-    public final static int MAX_Y = 300;
+    public final static int MAX_Y = 400;
 
     /**
      * Referenza á peza actual do xogo, que é a única que se pode mover
      */
     private Piece currentPiece;
-
     /**
      * Referenza á ventá principal do xogo
      */
     private MainWindow mainWindow;
-
     /**
      * Flag que indica se o xogo está en pausa ou non
      */
     private boolean paused = false;
-
     /**
      * Número de liñas feitas no xogo
      */
     private int numberOfLines = 0;
 
     /**
-     * @return Referenza á ventá principal do xogo
+     * Construtor da clase Game, que crea unha primeira peza
+     *
+     * @param mainWindow referenza á ventá principal do xogo
+     */
+    public Game(MainWindow mainWindow) {
+        groundSquares = new HashMap<>();
+        this.mainWindow = mainWindow;
+        this.createNewPiece();
+    }
+
+    /**
+     * Este método obtén o valor da variable mainWindow
+     *
+     * @return Devolve a referenza á ventá principal do xogo
      */
     public MainWindow getMainWindow() {
         return mainWindow;
     }
 
     /**
-     * @param mainWindow Ventá principal do xogo a establecer
+     * Este método modifica o valor da variable mainWindow
+     *
+     * @param mainWindow ventá principal do xogo a establecer
      */
     public void setMainWindow(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
     }
 
     /**
-     * @return O estado de pausa do xogo
+     * Este método obtén o valor da variable paused
+     *
+     * @return Devolve o estado de pausa do xogo
      */
     public boolean isPaused() {
         return paused;
     }
 
     /**
-     * @param paused O estado de pausa a establecer
+     * Este método modifica o valor da variable paused
+     *
+     * @param paused o estado de pausa a establecer
      */
     public void setPaused(boolean paused) {
         this.paused = paused;
     }
 
     /**
-     * @return Número de liñas feitas no xogo
+     * Este método obtén o valor da variable numberOfLines
+     *
+     * @return Devolve número de liñas feitas no xogo
      */
     public int getNumberOfLines() {
         return numberOfLines;
     }
 
     /**
-     * @param numberOfLines O número de liñas feitas no xogo
+     * Este método modifica o valor da variable numberOfLines
+     *
+     * @param numberOfLines o número de liñas feitas no xogo
      */
     public void setNumberOfLines(int numberOfLines) {
         this.numberOfLines = numberOfLines;
     }
 
+    /**
+     * Este método obtén o valor da variable groundSquares
+     *
+     * @return Devolve o valor da variable groundSquares
+     */
     public HashMap<String, Square> getGroundSquares() {
         return groundSquares;
     }
 
+    /**
+     * Este método modifica o valor da variable groundSquares
+     *
+     * @param groundSquares o valor da variable groundSquares
+     */
     public void setGroundSquares(HashMap<String, Square> groundSquares) {
         this.groundSquares = groundSquares;
     }
 
+    /**
+     * Este método obtén o valor da variable currentPiece
+     *
+     * @return Devolve o valor da variable currentPiece
+     */
     public Piece getCurrentPiece() {
         return currentPiece;
     }
 
+    /**
+     * Este método modifica o valor da variable currentPiece
+     *
+     * @param currentPiece o valor da variable currentPiece
+     */
     public void setCurrentPiece(Piece currentPiece) {
         this.currentPiece = currentPiece;
-    }
-
-    /**
-     * Construtor da clase, que crea unha primeira peza
-     *
-     * @param mainWindow Referenza á ventá principal do xogo
-     */
-    public Game(MainWindow mainWindow) {
-        groundSquares = new HashMap();
-        this.mainWindow = mainWindow;
-        this.createNewPiece();
     }
 
     /**
