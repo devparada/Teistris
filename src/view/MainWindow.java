@@ -119,9 +119,8 @@ public class MainWindow extends javax.swing.JFrame {
      * @param numberOfLines Número de liñas feitas no xogo
      */
     public void showNumberOfLines(int numberOfLines) {
-        if (game.getNumberOfLines() == numberOfLines) {
-            counter = counter / 2;
-        }
+        counter = counter / 2;
+        jLblTimer.setText(counter.toString());
 
         jLblNumberOfLines.setText(String.valueOf(numberOfLines));
     }
@@ -158,16 +157,8 @@ public class MainWindow extends javax.swing.JFrame {
         // 1000 milesegundos son 1 segundo e o timer ten o listener que é unha lambda
         timer = new Timer(counter, (ActionEvent ae) -> {
 
-            /*
-            É necesario está constante porque está dentro dunha lambda e nas lambda
-            soamente se adminten variables que non cambie o seu valor (final).
-            A variable counter cambia de valor antes de que se cree e está constante
-            se crea e se elimina cada segundo no timer
-             */
-            final Integer counterText = counter;
-
             // Mostra o timer que queda na partida de forma actualizada
-            jLblTimer.setText(counterText.toString());
+            jLblTimer.setText(counter.toString());
 
             // Si game é null (é cando remata unha partida) o é pausada a partida
             if (game == null || game.isPaused()) {
