@@ -137,6 +137,8 @@ public class MainWindow extends javax.swing.JFrame {
     private void startGame() {
         // Condición if para eliminar timers antiguos que podan seguir funcionando
         if (timer != null) {
+            // Se establece outra vez o valor a 1000 por si o usuario volve a xogar
+            counter = 1000;
             timer.stop();
         }
 
@@ -160,7 +162,7 @@ public class MainWindow extends javax.swing.JFrame {
 
             // Se cambia o valor do delay do timer (cada canto actua)
             timer.setDelay(counter);
-            
+
             // Si game é null (é cando remata unha partida) o é pausada a partida
             if (game == null || game.isPaused()) {
                 timer.stop();
@@ -184,6 +186,14 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDlgCredits = new javax.swing.JDialog();
+        jPnlCredits = new javax.swing.JPanel();
+        jLblCreditsTitle = new javax.swing.JLabel();
+        jLblCredits1 = new javax.swing.JLabel();
+        jLblCredits2 = new javax.swing.JLabel();
+        jLblCredits3 = new javax.swing.JLabel();
+        jBtnBack = new javax.swing.JButton();
+        jBtPhotoCredits = new javax.swing.JButton();
         JPnlMain = new javax.swing.JPanel();
         jPnlGame = new javax.swing.JPanel();
         jBtnRotate = new javax.swing.JButton();
@@ -199,10 +209,104 @@ public class MainWindow extends javax.swing.JFrame {
         jBtnNewGame = new javax.swing.JButton();
         jTglBtnPause = new javax.swing.JToggleButton();
 
+        jDlgCredits.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDlgCredits.setTitle("Credits");
+        jDlgCredits.setMinimumSize(new java.awt.Dimension(434, 394));
+        jDlgCredits.setModal(true);
+        jDlgCredits.setName(""); // NOI18N
+        jDlgCredits.setPreferredSize(new java.awt.Dimension(434, 394));
+        jDlgCredits.setResizable(false);
+
+        jPnlCredits.setMinimumSize(new java.awt.Dimension(434, 394));
+        jPnlCredits.setName(""); // NOI18N
+        jPnlCredits.setPreferredSize(new java.awt.Dimension(434, 394));
+
+        jLblCreditsTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblCreditsTitle.setText("Teistris de :");
+        jLblCreditsTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLblCredits1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblCredits1.setText("- Alejandro Martínez Domínguez");
+        jLblCredits1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLblCredits2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblCredits2.setText("- Bilo Alejandro Martins González");
+        jLblCredits2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLblCredits2.setMaximumSize(new java.awt.Dimension(190, 14));
+        jLblCredits2.setMinimumSize(new java.awt.Dimension(190, 14));
+
+        jLblCredits3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblCredits3.setText("- Raúl Parada de la Fuente");
+        jLblCredits3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jBtnBack.setText("Atras");
+        jBtnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnBackActionPerformed(evt);
+            }
+        });
+
+        jBtPhotoCredits.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/creditos.png"))); // NOI18N
+        jBtPhotoCredits.setText("jButton1");
+
+        javax.swing.GroupLayout jPnlCreditsLayout = new javax.swing.GroupLayout(jPnlCredits);
+        jPnlCredits.setLayout(jPnlCreditsLayout);
+        jPnlCreditsLayout.setHorizontalGroup(
+            jPnlCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnlCreditsLayout.createSequentialGroup()
+                .addComponent(jBtPhotoCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+            .addGroup(jPnlCreditsLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(jPnlCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLblCreditsTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblCredits1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblCredits2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblCredits3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlCreditsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jBtnBack)
+                .addGap(180, 180, 180))
+        );
+        jPnlCreditsLayout.setVerticalGroup(
+            jPnlCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlCreditsLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLblCreditsTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLblCredits1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLblCredits2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLblCredits3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBtnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBtPhotoCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jDlgCreditsLayout = new javax.swing.GroupLayout(jDlgCredits.getContentPane());
+        jDlgCredits.getContentPane().setLayout(jDlgCreditsLayout);
+        jDlgCreditsLayout.setHorizontalGroup(
+            jDlgCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDlgCreditsLayout.createSequentialGroup()
+                .addComponent(jPnlCredits, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        jDlgCreditsLayout.setVerticalGroup(
+            jDlgCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPnlCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 382, Short.MAX_VALUE)
+        );
+
+        jDlgCredits.getAccessibleContext().setAccessibleDescription("");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Teistris");
         setLocation(new java.awt.Point(0, 0));
-        setMinimumSize(new java.awt.Dimension(370, 600));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(370, 600));
         setResizable(false);
@@ -303,75 +407,79 @@ public class MainWindow extends javax.swing.JFrame {
             JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPnlMainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPnlGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(JPnlMainLayout.createSequentialGroup()
-                        .addComponent(jBtnLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPnlGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JPnlMainLayout.createSequentialGroup()
+                                .addComponent(jBtnLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBtnRight, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBtnRight, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(JPnlMainLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jTglBtnPause, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jBtnNewGame, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JPnlMainLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jBtnToCredits)
+                                    .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(JPnlMainLayout.createSequentialGroup()
+                                            .addComponent(jLblLines, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLblNumberOfLines, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(JPnlMainLayout.createSequentialGroup()
+                                            .addComponent(jLblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLblNumberTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(16, 16, 16))
                     .addGroup(JPnlMainLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBtnDown, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBtnRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(JPnlMainLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jTglBtnPause, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jBtnNewGame, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(JPnlMainLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBtnToCredits)
-                            .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(JPnlMainLayout.createSequentialGroup()
-                                    .addComponent(jLblLines, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLblNumberOfLines, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(JPnlMainLayout.createSequentialGroup()
-                                    .addComponent(jLblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLblNumberTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(16, 16, 16))
+                            .addGroup(JPnlMainLayout.createSequentialGroup()
+                                .addComponent(jBtnDown, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jBtnRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(213, 213, 213))))
         );
         JPnlMainLayout.setVerticalGroup(
             JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Separator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(JPnlMainLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jPnlGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPnlMainLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jPnlGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(JPnlMainLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jBtnRight)
-                                    .addComponent(jBtnLeft)))
-                            .addGroup(JPnlMainLayout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(jBtnDown))
-                            .addComponent(jBtnRotate)))
+                        .addGap(30, 30, 30)
+                        .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBtnRight)
+                            .addComponent(jBtnLeft)))
                     .addGroup(JPnlMainLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jBtnNewGame)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTglBtnPause)
-                        .addGap(28, 28, 28)
-                        .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLblTimer)
-                            .addComponent(jLblNumberTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLblLines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLblNumberOfLines, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBtnToCredits)))
-                .addGap(48, 48, 48))
+                        .addGap(60, 60, 60)
+                        .addComponent(jBtnDown))
+                    .addComponent(jBtnRotate))
+                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(JPnlMainLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jBtnNewGame)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTglBtnPause)
+                .addGap(28, 28, 28)
+                .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLblTimer)
+                    .addComponent(jLblNumberTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLblLines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblNumberOfLines, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBtnToCredits)
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -379,7 +487,7 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(JPnlMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -440,13 +548,18 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnDownActionPerformed
 
     private void jBtnToCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToCreditsActionPerformed
-        DialogCredits dialogCredits = new DialogCredits(this, true);
-        
         if (game != null) {
             game.setPaused(true);
         }
-        dialogCredits.setVisible(true);
+        jDlgCredits.setVisible(true);
     }//GEN-LAST:event_jBtnToCreditsActionPerformed
+
+    private void jBtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBackActionPerformed
+        if (game != null) {
+            game.setPaused(false);
+        }
+        jDlgCredits.setVisible(false);
+    }//GEN-LAST:event_jBtnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -495,16 +608,24 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPnlMain;
     private javax.swing.JSeparator Separator;
+    private javax.swing.JButton jBtPhotoCredits;
+    private javax.swing.JButton jBtnBack;
     private javax.swing.JButton jBtnDown;
     private javax.swing.JButton jBtnLeft;
     private javax.swing.JButton jBtnNewGame;
     private javax.swing.JButton jBtnRight;
     private javax.swing.JButton jBtnRotate;
     private javax.swing.JButton jBtnToCredits;
+    private javax.swing.JDialog jDlgCredits;
+    private javax.swing.JLabel jLblCredits1;
+    private javax.swing.JLabel jLblCredits2;
+    private javax.swing.JLabel jLblCredits3;
+    private javax.swing.JLabel jLblCreditsTitle;
     private javax.swing.JLabel jLblLines;
     private javax.swing.JLabel jLblNumberOfLines;
     private javax.swing.JLabel jLblNumberTimer;
     private javax.swing.JLabel jLblTimer;
+    private javax.swing.JPanel jPnlCredits;
     private javax.swing.JPanel jPnlGame;
     private javax.swing.JToggleButton jTglBtnPause;
     // End of variables declaration//GEN-END:variables
