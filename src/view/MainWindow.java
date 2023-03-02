@@ -158,6 +158,9 @@ public class MainWindow extends javax.swing.JFrame {
         // 1000 milesegundos son 1 segundo e o timer ten o listener que é unha lambda
         timer = new Timer(counter, (ActionEvent ae) -> {
 
+            // Se cambia o valor do delay do timer (cada canto actua)
+            timer.setDelay(counter);
+            
             // Si game é null (é cando remata unha partida) o é pausada a partida
             if (game == null || game.isPaused()) {
                 timer.stop();
