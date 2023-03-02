@@ -37,12 +37,10 @@ public class MainWindow extends javax.swing.JFrame {
      * Timer de Swing que é unha conta atras
      */
     private Timer timer;
-
     /**
      * Contador do timer
      */
     private Integer counter;
-
     /**
      * Referenza ao obxecto do xogo actual
      */
@@ -183,13 +181,6 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDlgCredits = new javax.swing.JDialog();
-        jPnlCredits = new javax.swing.JPanel();
-        jLblCreditsTitle = new javax.swing.JLabel();
-        jLblCredits1 = new javax.swing.JLabel();
-        jLblCredits2 = new javax.swing.JLabel();
-        jLblCredits3 = new javax.swing.JLabel();
-        jBtnBack = new javax.swing.JButton();
         JPnlMain = new javax.swing.JPanel();
         jPnlGame = new javax.swing.JPanel();
         jBtnRotate = new javax.swing.JButton();
@@ -204,94 +195,6 @@ public class MainWindow extends javax.swing.JFrame {
         jLblNumberOfLines = new javax.swing.JLabel();
         jBtnNewGame = new javax.swing.JButton();
         jTglBtnPause = new javax.swing.JToggleButton();
-
-        jDlgCredits.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDlgCredits.setTitle("Credits");
-        jDlgCredits.setLocation(new java.awt.Point(0, 0));
-        jDlgCredits.setMinimumSize(new java.awt.Dimension(310, 216));
-        jDlgCredits.setName(""); // NOI18N
-        jDlgCredits.setPreferredSize(new java.awt.Dimension(310, 216));
-        jDlgCredits.setResizable(false);
-
-        jPnlCredits.setMinimumSize(new java.awt.Dimension(310, 216));
-        jPnlCredits.setName(""); // NOI18N
-        jPnlCredits.setPreferredSize(new java.awt.Dimension(310, 216));
-
-        jLblCreditsTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLblCreditsTitle.setText("Teistris de :");
-        jLblCreditsTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jLblCredits1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLblCredits1.setText("- Alejandro Martínez Domínguez");
-        jLblCredits1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jLblCredits2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLblCredits2.setText("- Bilo Alejandro Martins González");
-        jLblCredits2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLblCredits2.setMaximumSize(new java.awt.Dimension(190, 14));
-        jLblCredits2.setMinimumSize(new java.awt.Dimension(190, 14));
-
-        jLblCredits3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLblCredits3.setText("- Raúl Parada de la Fuente");
-        jLblCredits3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jBtnBack.setText("Atras");
-        jBtnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jBtnBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBtnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnBackActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPnlCreditsLayout = new javax.swing.GroupLayout(jPnlCredits);
-        jPnlCredits.setLayout(jPnlCreditsLayout);
-        jPnlCreditsLayout.setHorizontalGroup(
-            jPnlCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnlCreditsLayout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addGroup(jPnlCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlCreditsLayout.createSequentialGroup()
-                        .addComponent(jBtnBack)
-                        .addGap(69, 69, 69))
-                    .addComponent(jLblCreditsTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLblCredits1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLblCredits2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLblCredits3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
-        jPnlCreditsLayout.setVerticalGroup(
-            jPnlCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlCreditsLayout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addComponent(jLblCreditsTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLblCredits1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLblCredits2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLblCredits3)
-                .addGap(18, 18, 18)
-                .addComponent(jBtnBack)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jDlgCreditsLayout = new javax.swing.GroupLayout(jDlgCredits.getContentPane());
-        jDlgCredits.getContentPane().setLayout(jDlgCreditsLayout);
-        jDlgCreditsLayout.setHorizontalGroup(
-            jDlgCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDlgCreditsLayout.createSequentialGroup()
-                .addComponent(jPnlCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jDlgCreditsLayout.setVerticalGroup(
-            jDlgCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDlgCreditsLayout.createSequentialGroup()
-                .addComponent(jPnlCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jDlgCredits.getAccessibleContext().setAccessibleName("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Teistris");
@@ -534,18 +437,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnDownActionPerformed
 
     private void jBtnToCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToCreditsActionPerformed
+        DialogCredits dialogCredits = new DialogCredits(this, true);
+        
         if (game != null) {
             game.setPaused(true);
         }
-        jDlgCredits.setVisible(true);
+        dialogCredits.setVisible(true);
     }//GEN-LAST:event_jBtnToCreditsActionPerformed
-
-    private void jBtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBackActionPerformed
-        if (game != null) {
-            game.setPaused(false);
-        }
-        jDlgCredits.setVisible(false);
-    }//GEN-LAST:event_jBtnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -594,23 +492,16 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPnlMain;
     private javax.swing.JSeparator Separator;
-    private javax.swing.JButton jBtnBack;
     private javax.swing.JButton jBtnDown;
     private javax.swing.JButton jBtnLeft;
     private javax.swing.JButton jBtnNewGame;
     private javax.swing.JButton jBtnRight;
     private javax.swing.JButton jBtnRotate;
     private javax.swing.JButton jBtnToCredits;
-    private javax.swing.JDialog jDlgCredits;
-    private javax.swing.JLabel jLblCredits1;
-    private javax.swing.JLabel jLblCredits2;
-    private javax.swing.JLabel jLblCredits3;
-    private javax.swing.JLabel jLblCreditsTitle;
     private javax.swing.JLabel jLblLines;
     private javax.swing.JLabel jLblNumberOfLines;
     private javax.swing.JLabel jLblNumberTimer;
     private javax.swing.JLabel jLblTimer;
-    private javax.swing.JPanel jPnlCredits;
     private javax.swing.JPanel jPnlGame;
     private javax.swing.JToggleButton jTglBtnPause;
     // End of variables declaration//GEN-END:variables
