@@ -55,18 +55,10 @@ public class TPiece extends Piece {
 
             if (!game.isValidPosition(newX, newY)) {
                 return false;
+            } else {
+                squares[i].setX(newX);
+                squares[i].setY(newY);
             }
-        }
-
-        for (int i = 0; i < squares.length; i++) {
-            int x = squares[i].getX();
-            int y = squares[i].getY();
-
-            int newX = centerX + (y - centerY);
-            int newY = centerY - (x - centerX);
-
-            squares[i].setX(newX);
-            squares[i].setY(newY);
         }
         return true;
     }

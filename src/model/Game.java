@@ -214,7 +214,7 @@ public class Game {
      * @return true se esa posición é válida, se non false
      */
     public boolean isValidPosition(int x, int y) {
-        if ((x == MAX_X) || (x < 0) || (y == MAX_Y) || groundSquares.containsKey(x + "," + y)) {
+        if (x >= MAX_X || x < 0 || y >= MAX_Y || groundSquares.containsKey(x + "," + y)) {
             return false;
         }
         return true;
