@@ -7,5 +7,5 @@ Nuestro proyecto de programación basado en el Tetris.
 <li>✅ Parte 2</li>
 <li>✅ Parte 3</li>
 <li>✅ Parte 4</li>
-<li>❌ Parte 5</li>
+<li>❌ Parte 5 (Opcional)</li>
 </ul>
