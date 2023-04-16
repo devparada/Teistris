@@ -53,15 +53,6 @@ public class LPiece extends Piece {
             int newX = centerX + (y - centerY);
             int newY = centerY - (x - centerX);
 
-            System.out.println("WW1 " + centerX);
-            System.out.println("WW2 " + centerY);
-
-            System.out.println("WW3 " + x);
-            System.out.println("WW4 " + x);
-
-            System.out.println("WW5 " + newX);
-            System.out.println("WW6 " + newY);
-
             if (!game.isValidPosition(newX, newY)) {
                 return false;
             } else {
