@@ -22,7 +22,7 @@ public class KeyDispatcher implements KeyEventDispatcher {
     private Game game;
 
     /**
-     * Constructor da clase TetrisKeyListener
+     * Constructor da clase KeyDispatcher
      *
      * @param game
      */
