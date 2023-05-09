@@ -40,7 +40,7 @@ public class MainWindow extends javax.swing.JFrame {
     /**
      * Contador do timer
      */
-    private Integer counter;
+    private Double counter;
     /**
      * Referenza ao obxecto do xogo actual
      */
@@ -51,7 +51,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         game = null;
-        counter = 1000;
+        counter = 1000.0;
         initComponents();
     }
 
@@ -60,7 +60,7 @@ public class MainWindow extends javax.swing.JFrame {
      *
      * @return Devolve o valor da variable counter
      */
-    public Integer getCounter() {
+    public double getCounter() {
         return counter;
     }
 
@@ -69,7 +69,7 @@ public class MainWindow extends javax.swing.JFrame {
      *
      * @param counter O valor da variable counter
      */
-    public void setCounter(Integer counter) {
+    public void setCounter(Double counter) {
         this.counter = counter;
     }
 
@@ -117,9 +117,11 @@ public class MainWindow extends javax.swing.JFrame {
      * @param numberOfLines Número de liñas feitas no xogo
      */
     public void showNumberOfLines(int numberOfLines) {
-        counter = counter / 2;
+        // Cada 5 líneas resta 5 milisegundos ao counter
+        if (numberOfLines % 5 == 0) {
+            counter = counter - 5;
+        }
         jLblNumberTimer.setText(counter.toString());
-
         jLblNumberOfLines.setText(String.valueOf(numberOfLines));
     }
 
@@ -138,7 +140,7 @@ public class MainWindow extends javax.swing.JFrame {
         // Condición if para eliminar timers antiguos que podan seguir funcionando
         if (timer != null) {
             // Se establece outra vez o valor a 1000 por si o usuario volve a xogar
-            counter = 1000;
+            counter = 1000.0;
             timer.stop();
         }
 
@@ -158,10 +160,10 @@ public class MainWindow extends javax.swing.JFrame {
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyDispatcher(game));
 
         // 1000 milesegundos son 1 segundo e o timer ten o listener que é unha lambda
-        timer = new Timer(counter, (ActionEvent ae) -> {
+        timer = new Timer(counter.intValue(), (ActionEvent ae) -> {
 
             // Se cambia o valor do delay do timer (cada canto actua)
-            timer.setDelay(counter);
+            timer.setDelay(counter.intValue());
 
             // Si game é null (é cando remata unha partida) o é pausada a partida
             if (game == null || game.isPaused()) {
@@ -217,24 +219,36 @@ public class MainWindow extends javax.swing.JFrame {
         jDlgCredits.setPreferredSize(new java.awt.Dimension(434, 394));
         jDlgCredits.setResizable(false);
 
+        jPnlCredits.setBackground(new java.awt.Color(0, 0, 0));
+        jPnlCredits.setForeground(new java.awt.Color(51, 51, 55));
         jPnlCredits.setMinimumSize(new java.awt.Dimension(434, 394));
-        jPnlCredits.setName(""); // NOI18N
         jPnlCredits.setPreferredSize(new java.awt.Dimension(434, 394));
 
+        jLblCreditsTitle.setBackground(new java.awt.Color(0, 0, 0));
+        jLblCreditsTitle.setForeground(new java.awt.Color(255, 255, 255));
         jLblCreditsTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLblCreditsTitle.setText("Teistris de :");
         jLblCreditsTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLblCreditsTitle.setOpaque(true);
 
+        jLblCredits1.setBackground(new java.awt.Color(0, 0, 0));
+        jLblCredits1.setForeground(new java.awt.Color(255, 255, 255));
         jLblCredits1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLblCredits1.setText("- Alejandro Martínez Domínguez");
         jLblCredits1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLblCredits1.setOpaque(true);
 
+        jLblCredits2.setBackground(new java.awt.Color(0, 0, 0));
+        jLblCredits2.setForeground(new java.awt.Color(255, 255, 255));
         jLblCredits2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLblCredits2.setText("- Bilo Alejandro Martins González");
         jLblCredits2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLblCredits2.setMaximumSize(new java.awt.Dimension(190, 14));
         jLblCredits2.setMinimumSize(new java.awt.Dimension(190, 14));
+        jLblCredits2.setOpaque(true);
 
+        jLblCredits3.setBackground(new java.awt.Color(0, 0, 0));
+        jLblCredits3.setForeground(new java.awt.Color(255, 255, 255));
         jLblCredits3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLblCredits3.setText("- Raúl Parada de la Fuente");
         jLblCredits3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -299,7 +313,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         jDlgCreditsLayout.setVerticalGroup(
             jDlgCreditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPnlCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 382, Short.MAX_VALUE)
+            .addComponent(jPnlCredits, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jDlgCredits.getAccessibleContext().setAccessibleDescription("");
@@ -308,9 +322,10 @@ public class MainWindow extends javax.swing.JFrame {
         setTitle("Teistris");
         setLocation(new java.awt.Point(0, 0));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(370, 600));
         setResizable(false);
 
+        JPnlMain.setBackground(new java.awt.Color(0, 0, 0));
+        JPnlMain.setForeground(new java.awt.Color(51, 51, 55));
         JPnlMain.setMinimumSize(new java.awt.Dimension(370, 600));
         JPnlMain.setPreferredSize(new java.awt.Dimension(370, 600));
 
@@ -367,10 +382,18 @@ public class MainWindow extends javax.swing.JFrame {
         Separator.setAlignmentY(1.0F);
         Separator.setPreferredSize(new java.awt.Dimension(0, 0));
 
+        jLblTimer.setBackground(new java.awt.Color(0, 0, 0));
+        jLblTimer.setForeground(new java.awt.Color(255, 255, 255));
         jLblTimer.setText("Timer:");
+        jLblTimer.setOpaque(true);
 
+        jLblNumberTimer.setBackground(new java.awt.Color(0, 0, 0));
+        jLblNumberTimer.setForeground(new java.awt.Color(255, 255, 255));
         jLblNumberTimer.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLblNumberTimer.setOpaque(true);
 
+        jLblLines.setBackground(new java.awt.Color(0, 0, 0));
+        jLblLines.setForeground(new java.awt.Color(255, 255, 255));
         jLblLines.setText("Liñas:");
         jLblLines.setMaximumSize(new java.awt.Dimension(26, 15));
         jLblLines.setMinimumSize(new java.awt.Dimension(26, 15));
@@ -383,6 +406,8 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        jLblNumberOfLines.setBackground(new java.awt.Color(0, 0, 0));
+        jLblNumberOfLines.setForeground(new java.awt.Color(255, 255, 255));
         jLblNumberOfLines.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         jBtnNewGame.setText("Nova partida");
@@ -460,7 +485,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addComponent(jBtnDown))
                     .addComponent(jBtnRotate))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(JPnlMainLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jBtnNewGame)
@@ -489,10 +514,8 @@ public class MainWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JPnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JPnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
