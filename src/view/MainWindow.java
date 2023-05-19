@@ -494,7 +494,6 @@ public class MainWindow extends javax.swing.JFrame {
     private void jBtnRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRotateActionPerformed
         // Ao picar no botón de "Rotar", chamamos ao obxecto xogo para que 
         // rote a peza actual
-        jPnlGame.requestFocus();
         if (game != null) {
             game.rotatePiece();
         }
