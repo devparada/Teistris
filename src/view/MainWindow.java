@@ -192,6 +192,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLblCredits3 = new javax.swing.JLabel();
         jBtnBack = new javax.swing.JButton();
         jBtPhotoCredits = new javax.swing.JButton();
+        jTglBtnPause1 = new javax.swing.JToggleButton();
         JPnlMain = new javax.swing.JPanel();
         jPnlGame = new javax.swing.JPanel();
         jBtnRotate = new javax.swing.JButton();
@@ -201,11 +202,10 @@ public class MainWindow extends javax.swing.JFrame {
         jLblLines = new javax.swing.JLabel();
         jLblNumberOfLines = new javax.swing.JLabel();
         jTglBtnPause = new javax.swing.JToggleButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jButton1 = new javax.swing.JButton();
+        jMnBBarra = new javax.swing.JMenuBar();
+        jMnAyuda = new javax.swing.JMenu();
+        jMnICreditos = new javax.swing.JMenuItem();
 
         jDlgCredits.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDlgCredits.setTitle("Credits");
@@ -315,6 +315,15 @@ public class MainWindow extends javax.swing.JFrame {
 
         jDlgCredits.getAccessibleContext().setAccessibleDescription("");
 
+        jTglBtnPause1.setForeground(new java.awt.Color(39, 39, 39));
+        jTglBtnPause1.setText("Pausa");
+        jTglBtnPause1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTglBtnPause1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTglBtnPauseActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Teistris");
         setLocation(new java.awt.Point(0, 0));
@@ -391,6 +400,15 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setForeground(new java.awt.Color(39, 39, 39));
+        jButton1.setText("Nova partida");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JPnlMainLayout = new javax.swing.GroupLayout(JPnlMain);
         JPnlMain.setLayout(JPnlMainLayout);
         JPnlMainLayout.setHorizontalGroup(
@@ -409,26 +427,30 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(JPnlMainLayout.createSequentialGroup()
                 .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPnlMainLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jPnlGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JPnlMainLayout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jTglBtnPause, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JPnlMainLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addComponent(jLblLines, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLblNumberOfLines, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JPnlMainLayout.createSequentialGroup()
                         .addGap(89, 89, 89)
-                        .addComponent(jBtnRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBtnRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPnlMainLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPnlMainLayout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTglBtnPause, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPnlGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JPnlMainLayout.setVerticalGroup(
             JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPnlMainLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jTglBtnPause)
+                .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTglBtnPause)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JPnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLblNumberOfLines, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -446,32 +468,19 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Xogo");
+        jMnAyuda.setText("Ayuda");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem1.setText("Nova partida");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMnICreditos.setText("Créditos");
+        jMnICreditos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMnICreditosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMnAyuda.add(jMnICreditos);
 
-        jMenuBar1.add(jMenu1);
+        jMnBBarra.add(jMnAyuda);
 
-        jMenu2.setText("Ayuda");
-
-        jMenuItem3.setText("Créditos");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMnBBarra);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -488,7 +497,11 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTglBtnPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTglBtnPauseActionPerformed
-        
+        // Ao picar no botón de "Pausa", chamamos ao obxecto xogo para 
+        // establecer o atributo de pausa no estado do botón
+        if (game != null) {
+            game.setPaused(jTglBtnPause.isSelected());
+        }
     }//GEN-LAST:event_jTglBtnPauseActionPerformed
 
     private void jBtnRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRotateActionPerformed
@@ -530,18 +543,18 @@ public class MainWindow extends javax.swing.JFrame {
         jDlgCredits.setVisible(false);
     }//GEN-LAST:event_jBtnBackActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // Ao picar no botón de "Nova partida", invocamos ao método privado 
-        // que inicia un novo xogo
-        startGame();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMnICreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnICreditosActionPerformed
         if (game != null) {
             game.setPaused(true);
         }
         jDlgCredits.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMnICreditosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Ao picar no botón de "Nova partida", invocamos ao método privado 
+        // que inicia un novo xogo
+        startGame();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -595,6 +608,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton jBtnLeft;
     private javax.swing.JButton jBtnRight;
     private javax.swing.JButton jBtnRotate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDlgCredits;
     private javax.swing.JLabel jLblCredits1;
     private javax.swing.JLabel jLblCredits2;
@@ -602,13 +616,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLblCreditsTitle;
     private javax.swing.JLabel jLblLines;
     private javax.swing.JLabel jLblNumberOfLines;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenu jMnAyuda;
+    private javax.swing.JMenuBar jMnBBarra;
+    private javax.swing.JMenuItem jMnICreditos;
     private javax.swing.JPanel jPnlCredits;
     private javax.swing.JPanel jPnlGame;
     private javax.swing.JToggleButton jTglBtnPause;
+    private javax.swing.JToggleButton jTglBtnPause1;
     // End of variables declaration//GEN-END:variables
 }
