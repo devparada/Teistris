@@ -161,15 +161,11 @@ public class MainWindow extends javax.swing.JFrame {
             // Se cambia o valor do delay do timer (cada canto actua)
             timer.setDelay(counter.intValue());
 
-            // Si game é null (é cando remata unha partida) o é pausada a partida
-            if (game == null || game.isPaused()) {
-                timer.stop();
-            } else {
+            // Si game non é null e non está pausada a partida
+            if (game != null && !game.isPaused()) {
                 // Move a peza cara abaixo
                 game.movePieceDown();
             }
-            // Inicia o timer en caso de que o xogo sexa pausado
-            timer.start();
         });
         // Inicia o timer por primeira vez (é necesario)
         timer.start();
